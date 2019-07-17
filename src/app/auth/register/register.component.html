@@ -1,0 +1,96 @@
+<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin my-5">
+    <div class="card-body">
+        <h5 class="card-title text-center">Register</h5>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12" style="text-align: center;">
+                    <img src="assets/images/BCX-Header.png" alt="BCX logo">
+            </div>
+        </div>
+        <form #registerForm="ngForm" class="form-signin">
+            <div class="form-group">
+              
+                <div class="form-label-group">
+                    <input type="text"
+                     class="form-control"
+                     id="username"
+                     #username="ngModel"
+                     [(ngModel)]="formData.username"
+                     name="username" placeholder="Username" required autofocus>
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                        <div *ngIf="username.errors.required">
+                        <p class="text-danger">Username is required.</p> 
+                        </div>
+                    </div>
+                    <label for="username">Username</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+              
+                <div class="form-label-group">
+                    <input type="email"
+                     class="form-control"
+                     id="email"
+                     #email="ngModel"
+                     [(ngModel)]="formData.email"
+                     name="email" placeholder="email" required autofocus>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div *ngIf="email.errors.required">
+                        <p class="text-danger">email is required.</p> 
+                        </div>
+                    </div>
+                    <label for="email">Email</label>
+                </div>
+              
+            </div>
+
+            <div class="form-group">
+              
+                <div class="form-label-group">
+                    <input type="password"
+                     class="form-control"
+                     id="password"
+                     #password="ngModel"
+                     [(ngModel)]="formData.password"
+                     name="password" placeholder="password" required autofocus>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <div *ngIf="password.errors.required">
+                            <p class="text-danger">Password is required.</p> 
+                        </div>
+                    </div>
+                    <label for="password">password</label>
+                </div>
+              
+            </div>
+
+            <div class="form-group">
+                <div class="form-label-group">
+                    <input type="password"
+                     class="form-control"
+                     id="passwordConfirmation"
+                     #passwordConfirmation="ngModel"
+                     [(ngModel)]="formData.passwordConfirmation"
+                     name="passwordConfirmation" placeholder="Confirm Password" required autofocus>
+                    <div *ngIf="passwordConfirmation.invalid
+                     && (passwordConfirmation.dirty || passwordConfirmation.touched)">
+                        <div *ngIf="passwordConfirmation.errors.required">
+                        <p class="text-danger">Please confirm your password</p> 
+                        </div>
+                    </div>
+                    <label for="passwordConfirmation">Confirm Password</label>
+                </div>
+            </div>
+
+            
+            <button [disabled]="!registerForm.form.valid" (click)="register()" type="submit" 
+            class="btn btn-lg btn-primary btn-block text-uppercase" >Submit <i class="fa fa-angle-right"></i></button>
+          </form>
+          <div *ngIf="errors.length > 0" class="text-danger" style="text-align: center;margin-top: 20px;">
+              <p *ngFor="let error of errors">
+                  {{error.detail}}
+              </p>
+          </div>
+    </div>
+    </div>
+</div>
