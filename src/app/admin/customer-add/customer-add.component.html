@@ -1,0 +1,174 @@
+<h4 class="m-3">Customers Details</h4>
+<ol class="breadcrumb card-signin mb-5 mt-5">
+    <li class="breadcrumb-item">
+        <a routerLink="/admin">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a routerLink="/admin/customers">customers</a>
+    </li>
+    <li class="breadcrumb-item active"><a routerLink="/admin/customers">Add Customer Details</a></li>
+</ol>
+
+<div class="row">
+    <div class="col-md-6 m-auto ">
+        <div class="card card-signin my-5">
+            <div class="card-body">
+                <h5 class="card-title text-center">Customer Details</h5>
+                <form class="form-signin"  [formGroup]="customerForm" (ngSubmit)="customerDetails()">
+
+
+                    <div class="form-label-group">
+                        <input  type="text" 
+                                id="nameHelp" 
+                                class="form-control" 
+                                placeholder="Customer name"
+                                formControlName="name"   
+                                autofocus>
+                        <label for="nameHelp">Customer name</label>
+
+                        <div *ngIf="isInvalidForm('name')">
+                            <div *ngIf="isRequired('name')">
+                                <p class="text-danger">Customer name is required.</p> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input  type="text" 
+                                id="surnameHelp" 
+                                class="form-control" 
+                                placeholder="Customer surname"
+                                formControlName="surname"   
+                                autofocus>
+                        <label for="surnameHelp">Customer surname</label>
+
+                        <div *ngIf="isInvalidForm('surname')">
+                            <div *ngIf="isRequired('surname')">
+                                <p class="text-danger">Customer surname is required.</p> 
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="form-label-group">
+                        <input  type="email" 
+                                id="inputEmail" 
+                                class="form-control" 
+                                placeholder="Email address" 
+                                formControlName="email" 
+                                autofocus>
+                        <label for="inputEmail">Email address</label>
+            
+                        <div *ngIf="isInvalidForm('email')">
+                            <div *ngIf="isRequired('email')">
+                                <p class="text-danger">Email is required.</p> 
+                            </div>
+            
+                            <div *ngIf="customerForm.controls['email'].errors.pattern">
+                                <p class="text-danger">Invalid email.</p> 
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-label-group">
+                        <input  type="text" 
+                                id="companyHelp" 
+                                class="form-control" 
+                                placeholder="Customer ompany"
+                                formControlName="company"   
+                                autofocus>
+                        <label for="companyHelp">Customer company</label>
+
+                        <div *ngIf="isInvalidForm('company')">
+                            <div *ngIf="isRequired('company')">
+                                <p class="text-danger">Customer company name is required.</p> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input  type="text" 
+                                id="addressHelp" 
+                                class="form-control" 
+                                placeholder="Address"
+                                formControlName="address"   
+                                autofocus>
+                        <label for="addressHelp">Address</label>
+
+                        <div *ngIf="isInvalidForm('address')">
+                            <div *ngIf="isRequired('address')">
+                                <p class="text-danger">Address is required.</p> 
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-label-group">
+                        <input  type="text" 
+                                id="contactPersonNameHelp" 
+                                class="form-control" 
+                                placeholder="Contact person's name"
+                                formControlName="contactPersonName"   
+                                autofocus>
+                        <label for="contactPersonNameHelp">Contact person's name</label>
+
+                        <div *ngIf="isInvalidForm('contactPersonName')">
+                            <div *ngIf="isRequired('contactPersonName')">
+                                <p class="text-danger">Contact person's name is required.</p> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col form-lable-group">
+                            <label for="contactPersonCellNoHelp">Contact person's cell number</label>
+                            <international-phone-number
+                            id="contactPersonCellNoHelp"  
+                            formControlName="contactPersonCellNo"
+                            placeholder="Enter phone number"
+                            [maxlength]="13"
+                            [defaultCountry]="'za'"
+                            [allowedCountries]="['za']">
+                            </international-phone-number>
+                            
+    
+                            <div *ngIf="isInvalidForm('contactPersonCellNo')">
+                                <div *ngIf="isRequired('contactPersonCellNo')">
+                                    <p class="text-danger">Contact person's cell is required.</p> 
+                                </div>
+                            </div>
+                        </div>
+                        
+    
+                        <div class="col form-lable-group">
+                            <label for="contactPersonPhoneNoHelp">Contact person's phone number</label>
+                            <international-phone-number
+                            id="contactPersonPhoneNoHelp"  
+                            formControlName="contactPersonPhoneNo"
+                            placeholder="Enter phone number"
+                            [maxlength]="13"
+                            [defaultCountry]="'za'"
+                            [allowedCountries]="['za']">
+                            </international-phone-number>
+                            
+    
+                            <div *ngIf="isInvalidForm('contactPersonPhoneNo')">
+                                <div *ngIf="isRequired('contactPersonPhoneNo')">
+                                    <p class="text-danger">Contact person's cell phone is required.</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    
+                   
+                    <button type="submit" [disabled]="customerForm.invalid" class="btn btn-lg btn-primary btn-block text-uppercase" >Next <i class="fa fa-angle-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,327 @@
+<h4 class="m-3">Product Details</h4>
+<ol class="breadcrumb card-signin mb-5 mt-5">
+    <li class="breadcrumb-item">
+        <a routerLink="/admin">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a routerLink="/admin/customers">customers</a>
+    </li>
+    <li class="breadcrumb-item"><a routerLink="/admin/customers">Add Customer Details</a></li>
+    <li class="breadcrumb-item active"><a routerLink="/admin/customers">Add Product Details</a></li>
+</ol>
+<div class="row">
+    <div class="col-md-6 m-auto ">
+        <div class="card card-signin my-5">
+            <div class="card-body">
+                <h5 class="card-title text-center">Product Details</h5>
+                <form class="form-signin" [formGroup]="customerProductForm" (ngSubmit)="customerProductDetails()">
+                    <span class="form-number shadow">Section 1</span>
+                    <div class="row mt-3">
+                        
+                        <div class="col form-group">
+                            <label for="exampleFormControlSelect1">Product Type</label>
+                            <select class="form-control" formControlName="productId" id="exampleFormControlSelect1">
+                                <option value="{{product._id}}" *ngFor="let product of products">{{product.name}}</option>
+                                
+                            </select>
+                            <div *ngIf="isInvalidForm('productId')">
+                                <div *ngIf="isRequired('productId')">
+                                    <p class="text-danger">Product Type is required.</p> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col form-group">
+                            <label for="exampleFormControlSelect2">Term</label>
+                            <select class="form-control" formControlName="term" id="exampleFormControlSelect2">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <div *ngIf="isInvalidForm('term')">
+                                <div *ngIf="isRequired('term')">
+                                    <p class="text-danger">Term is required.</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="vlanIdHelp" 
+                                        class="form-control" 
+                                        placeholder="VLAN ID"
+                                        formControlName="vlanId"   
+                                        autofocus>
+                                <label for="vlanIdHelp">VLAN ID</label>
+        
+                                <div *ngIf="isInvalidForm('vlanId')">
+                                    <div *ngIf="isRequired('vlanId')">
+                                        <p class="text-danger">VLAN ID is required.</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="circuitNoHelp" 
+                                        class="form-control" 
+                                        placeholder="Circuit No"
+                                        formControlName="circuitNo"   
+                                        autofocus>
+                                <label for="circuitNoHelp">Circuit Number</label>
+        
+                                <div *ngIf="isInvalidForm('circuitNo')">
+                                    <div *ngIf="isRequired('circuitNo')">
+                                        <p class="text-danger">Circuit number is required.</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <span class="form-number shadow">Section 2</span>
+                    <div class="row mt-3">
+                        <div class="col form-group">
+                            <label for="accessSelect">Access Type</label>
+                            <select class="form-control" formControlName="accessType" id="accessSelect">
+                                    <option active> -- Select Access Type -- </option>
+                                    <option value="LAN Connect">LAN Connect</option>
+                                    <option value="Managed LAN">Managed LAN</option>
+                                    <option value="MetroLink">MetroLink</option>
+                                    <option value="Teraco Dedicated cross connect">Teraco Dedicated cross connect</option>
+                                    <option value="Teraco Shared Cross Connect">Teraco Shared Cross Connect</option>
+                            </select>
+                            
+                            <div *ngIf="isInvalidForm('accessType')">
+                                <div *ngIf="isRequired('accessType')">
+                                    <p class="text-danger">Access Type is required.</p> 
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col col-input">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="accessSpeedHelp" 
+                                        class="form-control" 
+                                        placeholder="Access Speed"
+                                        formControlName="accessSpeed"   
+                                        autofocus>
+                                <label for="accessSpeedHelp">Access Speed (Mb)</label>
+        
+                                <div *ngIf="isInvalidForm('accessSpeed')">
+                                    <div *ngIf="isRequired('accessSpeed')">
+                                        <p class="text-danger">Access Speed (Mb)</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-input">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="noIPsHelp" 
+                                        class="form-control" 
+                                        placeholder="Number of IP's (Usable)"
+                                        formControlName="noIPs"   
+                                        autofocus>
+                                <label for="noIPsHelp">Number of IP's (Usable)</label>
+        
+                                <div *ngIf="isInvalidForm('noIPs')">
+                                    <div *ngIf="isRequired('noIPs')">
+                                        <p class="text-danger">Number of IP's (Usable) are required</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="totalBandwidthHelp" 
+                                        class="form-control" 
+                                        placeholder="Total Bandwith"
+                                        formControlName="totalBandwidth"   
+                                        autofocus>
+                                <label for="totalBandwidthHelp">Total Bandwith</label>
+    
+                                <div *ngIf="isInvalidForm('totalBandwidth')">
+                                    <div *ngIf="isRequired('totalBandwidth')">
+                                        <p class="text-danger">Total Bandwith is required.</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="localBandwidthHelp" 
+                                        class="form-control" 
+                                        placeholder="Local Bandwith"
+                                        formControlName="localBandwidth"   
+                                        autofocus>
+                                <label for="localBandwidthHelp">Local Bandwith</label>
+    
+                                <div *ngIf="isInvalidForm('localBandwidth')">
+                                    <div *ngIf="isRequired('localBandwidth')">
+                                        <p class="text-danger">Local Bandwith is required.</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="intBandwidthHelp" 
+                                        class="form-control" 
+                                        placeholder="Internation Bandwith"
+                                        formControlName="intBandwidth"   
+                                        autofocus>
+                                <label for="intBandwidthHelp">Internation Bandwith</label>
+    
+                                <div *ngIf="isInvalidForm('intBandwidth')">
+                                    <div *ngIf="isRequired('intBandwidth')">
+                                        <p class="text-danger">Internation Bandwith is required.</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                    <span class="form-number shadow">Optional</span>
+                    <div class="row">
+                        <div class="col col-input">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="teracoConnectHelp" 
+                                        class="form-control" 
+                                        placeholder="Teraco X Connect Point (if applicable)"
+                                        formControlName="teracoConnect"   
+                                        autofocus>
+                                <label for="teracoConnectHelp">Teraco X Connect Point (if applicable)</label>
+                                <small id="teracoConnectHelp" class="form-text text-danger">If applicable</small>
+        
+                                <!-- <div *ngIf="isInvalidForm('teracoConnect')">
+                                    <div *ngIf="isRequired('teracoConnect')">
+                                        <p class="text-danger">Teraco X Connect Point (if applicable)</p> 
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col form-group">
+
+                                <label for="eiOptionSelect">Enterprise Internet Option</label>
+                                <select class="form-control" formControlName="eiOption" id="eiOptionSelect">
+                                    <option value="Blended">Blended</option>
+                                    <option value="Bonze (1:6)">Bonze (1:6)</option>
+                                    <option value="Gold (1:1)">Gold (1:1)</option>
+                                    <option value="Local Only">Local Only</option>
+                                    <option value="Silver (1:3)">Silver (1:3)</option>
+                                </select>
+                                <!-- <div *ngIf="isInvalidForm('eiOption')">
+                                    <div *ngIf="isRequired('eiOption')">
+                                        <p class="text-danger">Enterprise Internet Option is required.</p> 
+                                    </div>
+                                </div> -->
+    
+                            </div>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input  type="text" 
+                                id="prioritisationHelp" 
+                                class="form-control" 
+                                placeholder="Prioritisation"
+                                formControlName="prioritisation"   
+                                autofocus>
+                        <label for="prioritisationHelp">Prioritisation</label>
+
+                        <!-- <div *ngIf="isInvalidForm('prioritisation')">
+                            <div *ngIf="isRequired('prioritisation')">
+                                <p class="text-danger">Prioritisation is required</p> 
+                            </div>
+                        </div> -->
+                    </div>
+                    
+
+                    <hr>
+                    <span class="form-number shadow">Section 3</span>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="productNameHelp" 
+                                        class="form-control" 
+                                        placeholder="Product name"
+                                        formControlName="productName"   
+                                        autofocus>
+                                <label for="productNameHelp">Product name</label>
+        
+                                <div *ngIf="isInvalidForm('productName')">
+                                    <div *ngIf="isRequired('productName')">
+                                        <p class="text-danger">Product name is required</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mt-3">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="usernameHelp" 
+                                        class="form-control" 
+                                        placeholder="Username"
+                                        formControlName="username"   
+                                        autofocus>
+                                <label for="usernameHelp">Username</label>
+        
+                                <div *ngIf="isInvalidForm('username')">
+                                    <div *ngIf="isRequired('username')">
+                                        <p class="text-danger">Username is required</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mt-3">
+                            <div class="form-label-group">
+                                <input  type="text" 
+                                        id="accessUsernameHelp" 
+                                        class="form-control" 
+                                        placeholder="Access username"
+                                        formControlName="accessUsername"   
+                                        autofocus>
+                                <label for="accessUsernameHelp">Access username</label>
+        
+                                <div *ngIf="isInvalidForm('accessUsername')">
+                                    <div *ngIf="isRequired('accessUsername')">
+                                        <p class="text-danger">Access username is required</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" [disabled]="customerProductForm.invalid" class="btn btn-lg btn-primary btn-block text-uppercase" >Submit <i class="fa fa-angle-right"></i></button>
+                </form>
+                <div *ngIf="errors" class="text-danger" style="text-align: center;margin-top: 20px;">
+                    <p *ngFor="let error of errors">
+                        {{error.detail}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<!-- <app-breadcrums [isAdmin]="isAdmin" [breadCrumsItems]="breadCrumps"></app-breadcrums> -->
+<h3 class="m-5">Customers</h3>
+<div class="row">
+    <div class="col-md-12" >
+        <button  class="btn btn-md btn-danger ml-5 shadow pull-left" routerLink="/admin/customer-add"><i class="fa fa-plus"></i> Add Customer</button>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <form>
+          <div class="form-group form-inline">
+            
+          </div>
+          <div class="form-group form-inline">
+        
+              <!-- <input class="form-control ml-2 pull-left" placeholder="Search..." type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+              <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span> -->
+          </div>
+        
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Product</th>
+                <th scope="col">Company</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of customers">
+                <th scope="row"></th>
+                <td>{{customer.name}}</td>
+                <td>{{customer.surname}}</td>
+                <td>{{customer.email}}</td>
+                <td>{{customer.product}}</td>
+                <td>{{customer.company}}</td>
+                <td>{{customer.createdAt}}</td>
+                <td><a routerLink="/admin/customer/{{customer._id}}">view</a></td>
+              </tr> 
+            </tbody>
+          </table>
+        
+          <!-- <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" sortable="name" (sort)="onSort($event)">Name</th>
+              <th scope="col" sortable="surname" (sort)="onSort($event)">Surname</th>
+              <th scope="col" sortable="email" (sort)="onSort($event)">Email</th>
+              <th scope="col" sortable="product" (sort)="onSort($event)">Product</th>
+              <th scope="col" sortable="company" (sort)="onSort($event)">Company</th>
+              <th scope="col" sortable="date" (sort)="onSort($event)">Date Created</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let customer of customers$ | async">
+              
+              <th scope="row">{{ customer.id }}</th>
+              
+              <td>
+                <a href="#">
+                <ngb-highlight [result]="customer.name" [term]="service.searchTerm"></ngb-highlight></a>
+              </td>
+              <td><ngb-highlight [result]="customer.surname" [term]="service.searchTerm"></ngb-highlight></td>
+              <td><ngb-highlight [result]="customer.email" [term]="service.searchTerm"></ngb-highlight></td>
+              <td><ngb-highlight [result]="customer.product" [term]="service.searchTerm"></ngb-highlight></td>
+              <td><ngb-highlight [result]="customer.company" [term]="service.searchTerm"></ngb-highlight></td>
+              <td><ngb-highlight [result]="customer.date" [term]="service.searchTerm"></ngb-highlight></td>
+              
+            </tr>
+            </tbody>
+          </table> -->
+        
+          <!-- <div class="d-flex justify-content-between p-2">
+            <ngb-pagination
+              [collectionSize]="total$ | async" [(page)]="service.page" [pageSize]="service.pageSize">
+            </ngb-pagination>
+        
+            <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+              <option [ngValue]="2">2 items per page</option>
+              <option [ngValue]="4">4 items per page</option>
+              <option [ngValue]="6">6 items per page</option>
+            </select>
+          </div> -->
+        
+        </form>
+  </div>
+</div>
