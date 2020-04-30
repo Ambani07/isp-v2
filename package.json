@@ -35,7 +35,7 @@
     "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
     "google-libphonenumber": "^3.2.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsonwebtoken": "^8.5.1",
     "material-design-icons": "^3.0.1",
     "moment": "^2.24.0",
